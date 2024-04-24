@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
     <Auth0ProviderWithNavigate>
         <App />
-        <Toaster visibleToasts={1} position="top-center" richColors/>
+        <Toaster  visibleToasts={1} position="top-center" richColors/>
     </Auth0ProviderWithNavigate>
     </BrowserRouter>
   </React.StrictMode>

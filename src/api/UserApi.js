@@ -4,7 +4,7 @@
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
-import {useNavigate} from 'react-router-dom'
+
 import {toast} from 'sonner'
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -14,7 +14,7 @@ export const registerUser = () => {
   const userRegister = async (user) => {
     const accessToken = await getAccessTokenSilently();
     const userCreated = await axios.post(
-      `${API_BASE_URL}/registerUser`,
+      `${API_BASE_URL}/api/v1/users`,
       { auth0Id: user?.sub, email: user?.email },
       {
         headers: {
@@ -39,7 +39,7 @@ export const getUser = () => {
   const fetchUser = async () => {
     try {
       const accessToken = await getAccessTokenSilently();
-      const response = await axios.get(`${API_BASE_URL}/getCurrentUser`, {
+      const response = await axios.get(`${API_BASE_URL}/api/v1/users`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -76,7 +76,7 @@ export const updateUser =()=>{
   const updateUserPofile = async(user)=>{
     setIsUpdateLoading(true)
     const accessToken = await getAccessTokenSilently();
-    const updatedUser = await axios.put(`${API_BASE_URL}/updateUser`,{...user},{
+    const updatedUser = await axios.put(`${API_BASE_URL}/api/v1/users`,{...user},{
       headers:{
         Authorization: `Bearer ${accessToken}`
       }
