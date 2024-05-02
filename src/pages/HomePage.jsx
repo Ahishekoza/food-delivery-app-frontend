@@ -1,15 +1,23 @@
 import landingPage from '../assets/landing.png'
 import appDownloadImage from '../assets/appDownload.png'
+import SearchBar from '@/components/SearchBar';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate()
+  const handleSubmit = (data) =>{
+    navigate(`/search/${data.searchQuery}`)
+  }
   return (
     <div className="flex flex-col gap-12">
       {/* Row 1 */}
-      <div className="bg-white rounded-lg py-8 flex flex-col gap-5 text-center -mt-16">
+      <div className="md:px-32 bg-white rounded-lg py-8 flex flex-col gap-5 text-center -mt-16">
         <h1 className="text-5xl font-bold tracking-tight text-orange-600">
           Tuck into a takeway today
         </h1>
         <span className="text-xl">Food is just a click away!</span>
+        {/* Search Bar */}
+        <SearchBar placeHolder="Search by City or Town" onSubmit={handleSubmit}/>
       </div>
 
       {/* Row 2 */}

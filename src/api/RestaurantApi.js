@@ -16,7 +16,7 @@ export const getMyRestaurant = () => {
     const accessToken = await getAccessTokenSilently();
 
     await axios
-      .get(`${API_BASE_URL}/api/v1/restaurant`, {
+      .get(`${API_BASE_URL}/api/v1/my/restaurant`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       })
       .then((response) => {
@@ -46,7 +46,7 @@ export const restaurant = () => {
     const accessToken = await getAccessTokenSilently();
     await axios
       .post(
-        `${API_BASE_URL}/api/v1/restaurant`,
+        `${API_BASE_URL}/api/v1/my/restaurant`,
         { ...restaurantDetails },
         {
           headers: {
@@ -77,7 +77,7 @@ export const updateRestaurant = () => {
     const accessToken = await getAccessTokenSilently();
     await axios
       .put(
-        `${API_BASE_URL}/api/v1/restaurant`,
+        `${API_BASE_URL}/api/v1/my/restaurant`,
         { ...restaurantDetails },
         {
           headers: {

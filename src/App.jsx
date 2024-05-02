@@ -5,6 +5,7 @@ import AuthCallBackPage from "./pages/AuthCallBackPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import AuthLayout from "./auth/AuthLayout";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
             element={
               <Layout>
                 <ManageRestaurantPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/search/:city"
+            element={
+              <Layout>
+                <SearchPage />
               </Layout>
             }
           />
