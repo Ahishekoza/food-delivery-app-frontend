@@ -1,13 +1,15 @@
-import landingPage from '../assets/landing.png'
-import appDownloadImage from '../assets/appDownload.png'
-import SearchBar from '@/components/SearchBar';
-import { useNavigate } from 'react-router-dom';
+import landingPage from "../assets/landing.png";
+import appDownloadImage from "../assets/appDownload.png";
+import SearchBar from "@/components/SearchBar";
+import { useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const HomePage = () => {
-  const navigate = useNavigate()
-  const handleSubmit = (data) =>{
-    navigate(`/search/${data.searchQuery}`)
-  }
+  const { user } = useAuth0();
+  const navigate = useNavigate();
+  const handleSubmit = (data) => {
+    navigate(`/${data.searchQuery}`);
+  };
   return (
     <div className="flex flex-col gap-12">
       {/* Row 1 */}
@@ -17,7 +19,13 @@ const HomePage = () => {
         </h1>
         <span className="text-xl">Food is just a click away!</span>
         {/* Search Bar */}
-        <SearchBar placeHolder="Search by City or Town" onSubmit={handleSubmit}/>
+
+        {user && (
+          <SearchBar
+            placeHolder="Search by City or Town"
+            onSubmit={handleSubmit}
+          />
+        )}
       </div>
 
       {/* Row 2 */}

@@ -6,6 +6,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 import AuthLayout from "./auth/AuthLayout";
 import ManageRestaurantPage from "./pages/ManageRestaurantPage";
 import SearchPage from "./pages/SearchPage";
+import DetailsPage from "./pages/DetailsPage";
 
 function App() {
   return (
@@ -38,14 +39,22 @@ function App() {
             }
           />
           <Route
-            path="/search/:city"
+            path="/:city"
             element={
               <Layout>
                 <SearchPage />
               </Layout>
             }
           />
-
+          <Route
+            exact={true}
+            path="/:city/:restaurantId/*"
+            element={
+              <Layout>
+                <DetailsPage />
+              </Layout>
+            }
+          />
         </Route>
       </Routes>
     </>

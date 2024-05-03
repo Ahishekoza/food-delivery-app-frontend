@@ -14,10 +14,11 @@ const formSchema = z.object({
   }),
 });
 
-const SearchBar = ({ onSubmit, placeHolder, searchQuery }) => {
+const SearchBar = ({ onSubmit, placeHolder, searchQuery = "" ,onReset}) => {
+
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: { searchQuery: "" },
+    defaultValues: { searchQuery: searchQuery},
   });
 
   useEffect(() => {
@@ -28,6 +29,10 @@ const SearchBar = ({ onSubmit, placeHolder, searchQuery }) => {
     form.reset({
         searchQuery:''
     })
+
+    if (onReset) {
+      onReset();
+    }
   }
   return (
     <Form {...form}>
@@ -50,6 +55,7 @@ const SearchBar = ({ onSubmit, placeHolder, searchQuery }) => {
               <FormControl>
                 <Input
                   {...field}
+                  
                   className="border-none shadow-none text-xl focus-visible:ring-0"
                   placeholder={placeHolder}
                 />

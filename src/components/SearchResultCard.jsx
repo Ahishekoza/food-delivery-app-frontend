@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Banknote, Clock, Dot } from "lucide-react";
 
-const SearchResultCard = ({ restaurant }) => {
+const SearchResultCard = ({ restaurant ,city}) => {
   return (
     <Link
-    to={`/detail/${restaurant._id}`}
+    to={`/${city}/${restaurant._id}`}
     className="grid lg:grid-cols-[2fr_3fr] gap-5 group"
   >
     <AspectRatio ratio={16 / 6}>
